@@ -11,6 +11,7 @@ const main = async () => {
   console.log("Contract deployed by:", owner.address);
 
   let waveCount;
+  let addressesThatWaved;
   waveCount = await waveContract.getTotalWaves();
 
   let waveTxn = await waveContract.wave();
@@ -22,6 +23,9 @@ const main = async () => {
   await waveTxn.wait();
 
   waveCount = await waveContract.getTotalWaves();
+
+  console.log("Addresses that waved:");
+  addressesThatWaved = await waveContract.getAddressesThatWaved();
 };
 
 const runMain = async () => {
